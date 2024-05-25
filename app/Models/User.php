@@ -52,10 +52,19 @@ class User extends Authenticatable
     static public function getRecordUser()
     {
         return self::select('users.*')
-                ->where('is_admin','=',0)
-                ->where('is_delete','=',0)
-                ->orderBy('users.id', 'desc')
-                ->paginate(20);
+            ->where('is_admin', '=', 0)
+            ->where('is_delete', '=', 0)
+            ->orderBy('users.id', 'desc')
+            ->paginate(20);
 
+    }
+
+    public function getProfile()
+    {
+        if (!empty($this->profile_pic) && file_exists('upload/profile/' . $this->profile_pic)) {
+            return url('upload/profile/' . $this->profile_pic);
+        } else {
+            return url('assets/img/profile-img.jpg');
+        }
     }
 }

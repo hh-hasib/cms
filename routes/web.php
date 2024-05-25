@@ -87,6 +87,9 @@ Route::group(['middleware' => 'adminuser'], function () {
 	Route::get('panel/change-password', [UserController::class, 'ChangePassword']);
 	Route::post('panel/change-password', [UserController::class, 'UpdatePassword']);
 
+	Route::get('panel/account-settings', [UserController::class, 'AccountSettings']);
+	Route::post('panel/account-settings', [UserController::class, 'UpdateAccountSettings']);
+
 
 	Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
 
